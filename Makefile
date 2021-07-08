@@ -90,6 +90,7 @@ retro-go-stm32/nofrendo-go/components/nofrendo/mappers/map093.c \
 retro-go-stm32/nofrendo-go/components/nofrendo/mappers/map094.c \
 retro-go-stm32/nofrendo-go/components/nofrendo/mappers/map160.c \
 retro-go-stm32/nofrendo-go/components/nofrendo/mappers/map162.c \
+retro-go-stm32/nofrendo-go/components/nofrendo/mappers/map187.c \
 retro-go-stm32/nofrendo-go/components/nofrendo/mappers/map193.c \
 retro-go-stm32/nofrendo-go/components/nofrendo/mappers/map228.c \
 retro-go-stm32/nofrendo-go/components/nofrendo/mappers/map229.c \
