@@ -280,16 +280,13 @@ int app_main_gw(uint8_t load_state)
         /* get how many cycles have been spent to process everything */
         end_cycles = get_dwt_cycles();
 
-        static dma_transfer_state_t last_dma_state = DMA_TRANSFER_STATE_HF;
         if(!common_emu_state.skip_frames)
         {
-            for(uint8_t p = 0; p < common_emu_state.pause_frames + 1; p++) {
-                static dma_transfer_state_t last_dma_state = DMA_TRANSFER_STATE_HF;
-                while (dma_state == last_dma_state) {
-                    cpumon_sleep();
-                }
-                last_dma_state = dma_state;
+            static dma_transfer_state_t last_dma_state = DMA_TRANSFER_STATE_HF;
+            while (dma_state == last_dma_state) {
+                cpumon_sleep();
             }
+            last_dma_state = dma_state;
         }
 
         /* get how cycles have been spent inside this loop */

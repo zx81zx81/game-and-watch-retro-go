@@ -594,12 +594,10 @@ void app_main_gb(uint8_t load_state, uint8_t start_paused)
             // odroid_audio_submit(pcm.buf, pcm.pos >> 1);
             // handled in pcm_submit instead.
             static dma_transfer_state_t last_dma_state = DMA_TRANSFER_STATE_HF;
-            for(uint8_t p = 0; p < common_emu_state.pause_frames + 1; p++) {
-                while (dma_state == last_dma_state) {
-                    cpumon_sleep();
-                }
-                last_dma_state = dma_state;
+            while (dma_state == last_dma_state) {
+                cpumon_sleep();
             }
+            last_dma_state = dma_state;
         }
     }
 }
