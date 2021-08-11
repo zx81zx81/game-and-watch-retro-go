@@ -4,7 +4,7 @@
 #include <romdb_pce.h>
 #include "lz4_depack.h"
 #include <assert.h>
-#include  "miniz.h"
+#include "miniz.h"
 #include <gfx.h>
 #include "main.h"
 #include "bilinear.h"
@@ -196,9 +196,7 @@ pce_osd_getromdata(unsigned char **data)
     unsigned char *dest = (unsigned char *)&_PCE_ROM_UNPACK_BUFFER;
     uint32_t available_size = (uint32_t)&_PCE_ROM_UNPACK_BUFFER_SIZE;
 
-    if (memcmp(&src[0], LZ4_MAGIC, LZ4_MAGIC_SIZE) == 0)
-    {
-
+    if (memcmp(&src[0], LZ4_MAGIC, LZ4_MAGIC_SIZE) == 0) {
         /* dest pointer to the ROM data in the internal RAM (raw) */
         uint32_t lz4_original_size;
         int32_t lz4_uncompressed_size;
@@ -224,8 +222,7 @@ pce_osd_getromdata(unsigned char **data)
         *data = dest;
 
         return lz4_uncompressed_size;
-    }
-    else if(strcmp(ROM_EXT, "zopfli") == 0){
+    } else if(strcmp(ROM_EXT, "zopfli") == 0) {
         /* DEFLATE decompression */
         printf("Zopfli compressed ROM detected.\n");
         size_t n_decomp_bytes;
@@ -235,9 +232,7 @@ pce_osd_getromdata(unsigned char **data)
         assert(n_decomp_bytes != TINFL_DECOMPRESS_MEM_TO_MEM_FAILED);
         *data = dest;
         return n_decomp_bytes;
-    }
-    else
-    {
+    } else {
         *data = (unsigned char *)ROM_DATA;
         return ROM_DATA_LENGTH;
     }
